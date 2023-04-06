@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div class="container-fluid py-5">
+                  <div class="container">
+
+                         <h4 class="text-info text-uppercase">Display Customer Details</h4>
+
+                    <div class="table-responsive">
+                      <table class="table table-bordered">
+                        <thead>
+                          <tr>
+
+                            <th>  Name </th>
+                            <th> Email</th>
+                            <th>Contact Number</th>
+                            <th> Username</th>
+                            <th>Password</th>
+                            <th>Image</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        {% for d in data %}
+                        <tr>
+                            <td>{{ d.Name }}</td>
+                            <td>{{ d.Email }}</td>
+                            <td>{{ d.Mobile }}</td>
+                            <td>{{ d.Username }}</td>
+                            <td>{{d.Password }}</td>
+                            <td>
+                                <img src="{{d.Image.url }}" width="60px">
+                            </td>
+                            <td>
+                                <form action="{% url 'editcustm' dataid=d.id %}">
+                                    <button type="submit" class="btn btn-success">Edit</button>
+                                </form>
+                            </td>
+                            <td>
+                                <form action="{% url 'deletedata' dataid=d.id %}">
+                                    <button type="submit" class="btn btn-success">Delete</button>
+                                </form>
+                            </td>
+
+                        </tr>
+                         {% endfor %}
+
+
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+</div>
+</body>
+</html>
+{% endblock %}

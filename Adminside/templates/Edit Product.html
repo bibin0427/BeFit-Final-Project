@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Edit Product</h4>
+             <form  method="POST" action="{% url 'updateproduct' dataid=data.id %}" enctype="multipart/form-data">
+                            {% csrf_token %}
+
+            <div class="row g-0">
+                <div class="col-lg-7">
+                    <div class="bg-primary h-100 p-5">
+                        <div class="row g-3">
+                            <select class="form-control" id="exampleSelect2" name="category">
+                                <option>Select</option>
+                                 <option>Protein</option>
+                                <option>Pre-Workout</option>
+                                 <option>Creatine</option>
+                                 <option>BCAAs & EAAs</option>
+                                <option>Mass Gainers</option>
+                                 <option>Fat loss</option>
+                                 <option>Test Boosters</option>
+
+                             <option>{{ d.name }}</option>
+
+                            </select>
+
+                        </div><br>
+
+                            <div class="row g-3">
+                                <div class="col-6">
+                                    <input type="text" class="form-control bg-light border-0 px-4" placeholder=" Product Name" name="name" value="{{data.Name}}" style="height: 55px;">
+                                </div>
+                                <div class="col-6">
+                                    <input type="text" class="form-control bg-light border-0 px-4" placeholder="Price" name="price" value="{{data.Price}}" style="height: 55px;">
+                                </div>
+                                <div class="col-12">
+                                    <input type="text" class="form-control bg-light border-0 px-4" placeholder="Quantity" name="quantity" value="{{data.Quantity}}" style="height: 55px;">
+                                </div>
+                                <div class="col-12">
+                                    <input type="text" class="form-control bg-light border-0 px-4" placeholder="Description" name="description" value="{{data.Description}}" style="height: 55px;">
+                                </div>
+                                <
+                                <div class="col-12">
+                                    <input type="file" name="image" >
+                                </div>
+
+                                <div class="col-12">
+                                    <button class="btn btn-secondary w-100 py-3" type="submit">Submit</button>
+                                </div>
+                            </div>
+
+                    </div>
+                </div>
+
+    </div>
+</form>
+
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+{% extends 'Index.html' %}
+{% block content %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Edit Category</h4>
+<!--                  <p class="card-description">-->
+<!--                  </p>-->
+                  <form method="POST" action="{% url 'updatecatdata' dataid=data.id %}" enctype="multipart/form-data">
+                            {% csrf_token %}
+                    <div class="form-group">
+                      <label for="exampleInputName1">Name</label>
+                      <input type="text" class="form-control" id="exampleInputName1" placeholder="Name" name="name" value="{{data.Name}}">
+                    </div>
+                      <div class="form-group">
+                      <label for="exampleInputName1">Description</label>
+                      <input type="text" class="form-control" id="exampleInputName2" placeholder="Description" name="name" value="{{data.Description}}">
+                    </div>
+<!--                    <div class="form-group">-->
+<!--                      <label for="exampleInputName1">Description</label>-->
+<!--                      <textarea type="text" class="form-control" id="exampleInputName2" placeholder="Description" name="description" value="{{data.Name}}"></textarea>-->
+<!--                    </div>-->
+
+                    <div class="form-group">
+                      <input type="file" name="image" >
+                    </div>
+                    <button type="submit" class="btn btn-primary me-2">Submit</button>
+                    <button class="btn btn-light">Cancel</button>
+                  </form>
+                </div>
+              </div>
+
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+
+<html lang="en">
+<hea
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Add Product</h4>
+             <form  method="POST" action="{% url 'productdata' %}" enctype="multipart/form-data">
+                            {% csrf_token %}
+
+            <div class="row g-0">
+                <div class="col-lg-7">
+                    <div class="bg-dark h-100 p-5">
+                        <div class="row g-3">
+                            <select class="form-control" id="exampleSelect2" name="category">
+                                <option>Select</option>
+                                <option>Protein</option>
+                                <option>Pre-Workout</option>
+                                 <option>Creatine</option>
+                                 <option>BCAAs & EAAs</option>
+                                <option>Mass Gainers</option>
+                                 <option>Fat Loss</option>
+                                 <option>Test Boosters</option>
+                                {% for d in data %}
+                             <option>{{d.name}}</option>
+                                 {% endfor %}
+                            </select>
+
+                        </div><br>
+
+                            <div class="row g-3">
+                                <div class="col-6">
+                                    <input type="text" class="form-control bg-light border-0 px-4" placeholder=" Product Name" name="name" style="height: 55px;">
+                                </div>
+                                <div class="col-6">
+                                    <input type="text" class="form-control bg-light border-0 px-4" placeholder="Price" name="price" style="height: 55px;">
+                                </div>
+                                <div class="col-12">
+                                    <input id="Kilograms" type="number" class="form-control bg-light border-0 px-4" placeholder="Quantity in Kg" name="quantity" style="height: 55px;">
+                                </div>
+                                <div class="col-12">
+                                    <input type="text" class="form-control bg-light border-0 px-4" placeholder="Description" name="description" style="height: 55px;">
+                                </div>
+                                <
+                                <div class="col-12">
+                                    <input type="file" name="image" >
+                                </div>
+
+                                <div class="col-12">
+                                    <button class="btn btn-secondary w-100 py-3" type="submit">Submit</button>
+                                </div>
+                            </div>
+
+                    </div>
+                </div>
+
+    </div>
+</form>
+
+</body>
+</html>
+{% endblock %}
